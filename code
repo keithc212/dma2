@@ -1,15 +1,5 @@
-# replace any NaN values
-df.replace([np.inf, -np.inf], np.nan, inplace=True)
-df = df.fillna(0)
-
 # using a pipeline, scale  the data and classify it
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import SGDClassifier
 cls = Pipeline([("scaler", StandardScaler()), ("classifier", SGDClassifier())])
-
-# fit classifier to data
-cls.fit(train_features, train_labels)
-
-# create predictions and score accuracy
-print(cls.score(test_features, test_labels))
